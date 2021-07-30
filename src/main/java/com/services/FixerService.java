@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FixerServiceImpl{
+public class FixerService {
 
     @Autowired
     private FixerRepository fixerRepository;
 
-    public Iterable<FixerModel> save(List<FixerModel> currencies){
-        return fixerRepository.save(currencies);
+    public void save(List<FixerModel> currencies) {
+        fixerRepository.saveAll(currencies);
     }
 }
