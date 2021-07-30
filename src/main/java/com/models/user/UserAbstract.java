@@ -3,6 +3,7 @@ package com.models.user;
 import com.models.Client;
 import com.models.Currency;
 
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public class UserAbstract {
 
+    @Id
     private String requestId;
 
     private Timestamp time;
