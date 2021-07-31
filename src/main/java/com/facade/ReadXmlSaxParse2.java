@@ -1,4 +1,4 @@
-package com;
+package com.facade;
 
 import org.xml.sax.SAXException;
 
@@ -10,7 +10,8 @@ import java.io.InputStream;
 
 public class ReadXmlSaxParse2 {
 
-    public static void main(String[] args) {
+    public static UserSax start() {
+
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
         try (InputStream is = getXMLFileAsStream()) {
@@ -19,9 +20,11 @@ public class ReadXmlSaxParse2 {
             UserCurrencySax handler = new UserCurrencySax();
             saxParser.parse(is, handler);
 
+            return handler.user;
         } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }
+        return new UserSax();
     }
 
 

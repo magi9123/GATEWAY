@@ -1,4 +1,4 @@
-package com;
+package com.facade;
 
 import com.models.user.UserAbstract;
 import org.xml.sax.Attributes;
