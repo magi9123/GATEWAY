@@ -16,14 +16,14 @@ public class UserCurrencyService {
 
     public void save(UserAbstract userCurrencies) {
 
-        String requestId = userCurrencies.getRequestId();
-        boolean requestIdExist = userCurrencyRepository.existsById(requestId);
+//        String requestId = userCurrencies.getRequestId();
+//        boolean requestIdExist = userCurrencyRepository.existsById(requestId);
 
-        if (!requestIdExist) {
-            userCurrencyRepository.save(userCurrencies);
-            logger.info("Record is saved with id: " + requestId);
-        } else {
-            logger.info("Already exist record with id: " + requestId);
-        }
+//        if (!requestIdExist) {
+//            userCurrencyRepository.save(userCurrencies);
+//            logger.info("Record is saved with id: " + requestId);
+//        } else {
+//            logger.info("Already exist record with id: " + requestId);
+//        }
     }
 }
