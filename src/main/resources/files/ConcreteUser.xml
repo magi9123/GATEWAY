@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<command id="1234">
+    <get consumer="13617162">
+        <currency>EUR</currency>
+    </get>
+</command>
