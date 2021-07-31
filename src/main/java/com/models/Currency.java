@@ -11,7 +11,7 @@ public class Currency {
     private int id;
 
     @OneToMany
-    private String currency;
+    private String name;
 
     public int getId() {
         return id;
@@ -21,11 +21,11 @@ public class Currency {
         this.id = id;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getName() {
+        return name;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setName(String name) {
+        this.name = name;
     }
 }
