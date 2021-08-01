@@ -2,6 +2,8 @@ package com.facade;
 
 import com.models.UserFormModel;
 import com.models.user.UserCurrencyAbstract;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -10,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserCurrencySax extends DefaultHandler {
+
+    Logger logger = LoggerFactory.getLogger(UserCurrencySax.class);
 
     private StringBuilder values = new StringBuilder();
     List<UserCurrencyAbstract> users;

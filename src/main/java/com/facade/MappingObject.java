@@ -8,9 +8,13 @@ import com.models.user.UserCurrency;
 import com.models.user.UserCurrencyHistory;
 import com.repositories.ClientRepository;
 import com.repositories.UserCurrencyRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class MappingObject {
+
+    Logger logger = LoggerFactory.getLogger(MappingObject.class);
 
     @Autowired
     private UserCurrencyRepository userCurrencyRepository;
@@ -18,7 +22,7 @@ public class MappingObject {
     @Autowired
     private ClientRepository clientRepository;
 
-    public UserCurrencyAbstract start(final UserFormModel userFormModel) {
+    public UserCurrencyAbstract convertToEntityObject(final UserFormModel userFormModel) {
 
         UserCurrencyAbstract user;
         if (userFormModel.getPeriod() == 0) {

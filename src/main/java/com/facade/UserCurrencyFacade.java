@@ -17,10 +17,10 @@ public class UserCurrencyFacade {
         UserCurrencyAbstract userData;
 
         Validator validator = new Validator();
-        validator.start(user);
+        validator.validate(user);
 
         MappingObject mappingObject = new MappingObject();
-        userData = mappingObject.start(user);
+        userData = mappingObject.convertToEntityObject(user);
 
         return userData;
     }
@@ -37,7 +37,7 @@ public class UserCurrencyFacade {
         UserFormModel user;
 
         ReadXmlSaxParse2 readXmlSaxParse2 = new ReadXmlSaxParse2();
-        user = readXmlSaxParse2.start(path);
+        user = readXmlSaxParse2.convertXmlFileToObject(path);
 
         UserCurrencyAbstract userData = convertToEntityObject(user);
 
