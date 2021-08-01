@@ -1,6 +1,8 @@
 package com.controller;
 
 import com.models.UserFormModel;
+import com.models.UserXMLForm;
+import com.services.RabbitMqSender;
 import com.services.UserCurrencyService;
 import com.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,19 @@ public class Provider2Controller {
     @Autowired
     private UserCurrencyService userCurrencyService;
 
-    @PostMapping(value = "command", consumes = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.TEXT_XML_VALUE})
-    public ResponseEntity<Response> user(@RequestBody UserFormModel user) {
-        userCurrencyService.save(user);
+    @Autowired
+    private RabbitMqSender rabbitMqSender;
+
+    @PostMapping(value = "/command")
+    public ResponseEntity<Response> userCurrent(@RequestBody UserXMLForm user) {
+        UserFormModel userFormModel = new UserFormModel();
+        userFormModel = userFormModel.convertXMLFormToUserForm(user);
+        userCurrencyService.save(userFormModel);
+
+        rabbitMqSender.send(userFormModel);
 
         List<String> details = new ArrayList<>();
-        details.add(user.getRequestId());
+        details.add(userFormModel.getRequestId());
         Response response = new Response(RECORD_IS_SAVED, details);
 
         return new ResponseEntity<>(response, HttpStatus.OK);

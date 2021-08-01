@@ -27,7 +27,7 @@ public class Provider1Controller {
     @PostMapping(value = "/current", consumes = "application/json")
     public ResponseEntity<Response> currentUser(@RequestBody UserFormModel user) {
         userCurrencyService.save(user);
-        //  rabbitMqSender.send(user);
+        rabbitMqSender.send(user);
 
         List<String> details = new ArrayList<>();
         details.add(user.getRequestId());
@@ -39,6 +39,7 @@ public class Provider1Controller {
     @PostMapping(value = "/history", consumes = "application/json")
     public ResponseEntity<Response> userHistory(@RequestBody UserFormModel user) {
         userCurrencyService.save(user);
+        rabbitMqSender.send(user);
 
         List<String> details = new ArrayList<>();
         details.add(user.getRequestId());
