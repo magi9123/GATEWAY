@@ -40,8 +40,8 @@ public class MappingObject {
         user.setCurrency(currency);
 
 
-        if (!(userFormModel.getTime() == null)) {
-            user.setTime(userFormModel.getTime());
+        if (!(userFormModel.getTimestamp() == null)) {
+            user.setTime(userFormModel.getTimestamp());
         }
 
         if (!(userFormModel.getPeriod() == 0)) {

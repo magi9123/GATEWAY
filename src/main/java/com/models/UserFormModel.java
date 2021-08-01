@@ -1,12 +1,10 @@
 package com.models;
 
 
-import java.sql.Timestamp;
-
 public class UserFormModel {
 
     private String requestId;
-    private Timestamp time;
+    private Long timestamp;
     private String client;
     private String currency;
     private int period;
@@ -19,12 +17,12 @@ public class UserFormModel {
         this.requestId = requestId;
     }
 
-    public Timestamp getTime() {
-        return time;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public void setTime(Timestamp time) {
-        this.time = time;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getClient() {

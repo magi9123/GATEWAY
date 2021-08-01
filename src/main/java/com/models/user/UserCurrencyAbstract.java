@@ -23,7 +23,7 @@ public abstract class UserCurrencyAbstract {
     @Id
     private String requestId;
 
-    private Timestamp time;
+    private Long time;
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "client", referencedColumnName = "id")
@@ -41,11 +41,11 @@ public abstract class UserCurrencyAbstract {
         this.requestId = requestId;
     }
 
-    public Timestamp getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
