@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.models.user.UserAbstract;
+import com.models.UserFormModel;
 import com.services.RabbitMqSender;
 import com.services.UserCurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,13 @@ public class Provider1Controller {
     private RabbitMqSender rabbitMqSender;
 
     @PostMapping(value = "/current", consumes = "application/json")
-    public void currentUser(@RequestBody UserAbstract userAbstract) {
-        userCurrencyService.save(userAbstract);
-        rabbitMqSender.send(userAbstract);
+    public void currentUser(@RequestBody UserFormModel user) {
+        userCurrencyService.save(user);
+       // rabbitMqSender.send(user);
     }
 
     @PostMapping(value = "/history", consumes = "application/json")
-    public void userHistory(@RequestBody UserAbstract userAbstract) {
-        userCurrencyService.save(userAbstract);
+    public void userHistory(@RequestBody UserFormModel user) {
+        userCurrencyService.save(user);
     }
 }
