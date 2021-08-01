@@ -31,9 +31,9 @@ public class Provider1Controller {
 
         List<String> details = new ArrayList<>();
         details.add(user.getRequestId());
-        Response error = new Response(RECORD_IS_SAVED, details);
+        Response response = new Response(RECORD_IS_SAVED, details);
 
-        return new ResponseEntity<>(error, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping(value = "/history", consumes = "application/json")
@@ -42,8 +42,8 @@ public class Provider1Controller {
 
         List<String> details = new ArrayList<>();
         details.add(user.getRequestId());
-        Response error = new Response(RECORD_IS_SAVED, details);
+        Response response = new Response(RECORD_IS_SAVED, details);
 
-        return new ResponseEntity<>(error, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
