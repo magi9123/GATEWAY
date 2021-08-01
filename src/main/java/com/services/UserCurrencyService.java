@@ -21,15 +21,6 @@ public class UserCurrencyService {
         UserCurrencyFacade userCurrencyFacade = new UserCurrencyFacade();
         UserCurrencyAbstract userCurrencyAbstract = userCurrencyFacade.convertToEntityObject(userCurrencies);
 
-
-//        String requestId = userCurrencies.getRequestId();
-//        boolean requestIdExist = userCurrencyRepository.existsById(requestId);
-
-//        if (!requestIdExist) {
         userCurrencyRepository.save(userCurrencyAbstract);
-//            logger.info("Record is saved with id: " + requestId);
-//        } else {
-//            logger.info("Already exist record with id: " + requestId);
-//        }
     }
 }
