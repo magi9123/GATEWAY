@@ -2,9 +2,10 @@ package com.facade;
 
 import com.models.Client;
 import com.models.Currency;
-import com.models.user.UserAbstract;
+import com.models.UserFormModel;
+import com.models.user.UserCurrencyAbstract;
 import com.models.user.UserCurrency;
-import com.models.user.UserHistoryCurrency;
+import com.models.user.UserCurrencyHistory;
 import com.repositories.ClientRepository;
 import com.repositories.UserCurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,30 +18,30 @@ public class MappingObject {
     @Autowired
     private ClientRepository clientRepository;
 
-    public UserAbstract start(final UserSax userSax) {
+    public UserCurrencyAbstract start(final UserFormModel userFormModel) {
 
-        UserAbstract user;
-        if (userSax.getPeriod() == 0) {
+        UserCurrencyAbstract user;
+        if (userFormModel.getPeriod() == 0) {
             user = new UserCurrency();
         } else {
-            user = new UserHistoryCurrency();
+            user = new UserCurrencyHistory();
         }
 
-        user.setRequestId(userSax.getRequestId());
+        user.setRequestId(userFormModel.getRequestId());
 
-        Client client = clientRepository.findByClientId(userSax.getClient());
+        Client client = clientRepository.findByClientId(userFormModel.getClient());
         user.setClient(client);
 
-        Currency currency = userCurrencyRepository.findByCurrency(userSax.getCurrency());
+        Currency currency = userCurrencyRepository.findByCurrency(userFormModel.getCurrency());
         user.setCurrency(currency);
 
 
-        if (!(userSax.getTime() == null)) {
-            user.setTime(userSax.getTime());
+        if (!(userFormModel.getTime() == null)) {
+            user.setTime(userFormModel.getTime());
         }
 
-        if (!(userSax.getPeriod() == 0)) {
-            ((UserHistoryCurrency) user).setPeriod(userSax.getPeriod());
+        if (!(userFormModel.getPeriod() == 0)) {
+            ((UserCurrencyHistory) user).setPeriod(userFormModel.getPeriod());
         }
 
 

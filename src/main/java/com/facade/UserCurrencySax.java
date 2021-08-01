@@ -1,6 +1,7 @@
 package com.facade;
 
-import com.models.user.UserAbstract;
+import com.models.UserFormModel;
+import com.models.user.UserCurrencyAbstract;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -11,8 +12,8 @@ import java.util.List;
 public class UserCurrencySax extends DefaultHandler {
 
     private StringBuilder values = new StringBuilder();
-    List<UserAbstract> users;
-    final UserSax user = new UserSax();
+    List<UserCurrencyAbstract> users;
+    final UserFormModel user = new UserFormModel();
 
     @Override
     public void startDocument() throws SAXException {

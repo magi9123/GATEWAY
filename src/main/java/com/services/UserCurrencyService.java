@@ -1,6 +1,6 @@
 package com.services;
 
-import com.facade.UserFacade;
+import com.facade.UserCurrencyFacade;
 import com.models.UserFormModel;
 import com.models.user.UserCurrencyAbstract;
 import com.repositories.UserCurrencyRepository;
@@ -18,8 +18,8 @@ public class UserCurrencyService {
 
     public void save(UserFormModel userCurrencies) {
 
-        UserFacade userFacade = new UserFacade();
-        UserCurrencyAbstract userCurrencyAbstract = userFacade.save(userCurrencies);
+        UserCurrencyFacade userCurrencyFacade = new UserCurrencyFacade();
+        UserCurrencyAbstract userCurrencyAbstract = userCurrencyFacade.convertToEntityObject(userCurrencies);
 
 
 //        String requestId = userCurrencies.getRequestId();

@@ -1,5 +1,6 @@
 package com.facade;
 
+import com.models.UserFormModel;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -10,7 +11,7 @@ import java.io.InputStream;
 
 public class ReadXmlSaxParse2 {
 
-    public static UserSax start() {
+    public UserFormModel start(String path) {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
@@ -24,7 +25,7 @@ public class ReadXmlSaxParse2 {
         } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }
-        return new UserSax();
+        return new UserFormModel();
     }
 
 

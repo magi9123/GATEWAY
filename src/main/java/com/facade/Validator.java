@@ -1,10 +1,11 @@
 package com.facade;
 
+import com.models.UserFormModel;
 import com.repositories.ClientRepository;
 import com.repositories.UserCurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ValidateXml {
+public class Validator {
 
     @Autowired
     private UserCurrencyRepository userCurrencyRepository;
@@ -12,12 +13,12 @@ public class ValidateXml {
     @Autowired
     private ClientRepository clientRepository;
 
-    public UserSax start(final UserSax userSax) {
+    public UserFormModel start(final UserFormModel userFormModel) {
 
-        if (userSax.getRequestId() == null || userSax.getRequestId().isBlank()) {
+        if (userFormModel.getRequestId() == null || userFormModel.getRequestId().isBlank()) {
             //TODO: throw custom exception
         } else {
-            String requestId = userSax.getRequestId();
+            String requestId = userFormModel.getRequestId();
             boolean requestIdExist = userCurrencyRepository.existsById(requestId);
 
             if (requestIdExist) {
@@ -25,10 +26,10 @@ public class ValidateXml {
             }
         }
 
-        if (userSax.getClient() == null || userSax.getClient().isBlank()) {
+        if (userFormModel.getClient() == null || userFormModel.getClient().isBlank()) {
             //TODO: throw custom exception
         } else {
-            String clientId = userSax.getClient();
+            String clientId = userFormModel.getClient();
             boolean clientExist = clientRepository.existsById(clientId);
 
             if (clientExist) {
@@ -36,10 +37,10 @@ public class ValidateXml {
             }
         }
 
-        if (userSax.getCurrency() == null || userSax.getCurrency().isBlank()) {
+        if (userFormModel.getCurrency() == null || userFormModel.getCurrency().isBlank()) {
             //TODO: throw custom exception
         }
 
-        return userSax;
+        return userFormModel;
     }
 }
