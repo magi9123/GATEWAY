@@ -9,8 +9,16 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrimaryKeyJoinColumn;
 import java.sql.Timestamp;
 
+/**
+ *
+ * Common part for the tables user_currency and user_history_currency.
+ * It is similar to table per class inheritance but no table joins or inheritance exists in data model.
+ * There's no table for the mapped superclass. Inheritance only exists in object model.
+ *
+ */
+
 @MappedSuperclass
-public class UserAbstract {
+public abstract class UserCurrencyAbstract {
 
     @Id
     private String requestId;

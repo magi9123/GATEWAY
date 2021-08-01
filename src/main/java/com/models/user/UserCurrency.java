@@ -9,6 +9,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_currency")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "requestId", scope = UserCurrency.class)
-public class UserCurrency extends UserAbstract {
+public class UserCurrency extends UserCurrencyAbstract {
 
 }

@@ -1,6 +1,6 @@
 package com.services;
 
-import com.models.user.UserAbstract;
+import com.models.user.UserCurrencyAbstract;
 import org.slf4j.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class RabbitMqSender {
     @Value("${spring.rabbitmq.routingkey}")
     private String routingKey;
 
-    public void send(UserAbstract user) {
+    public void send(UserCurrencyAbstract user) {
         rabbitTemplate.convertAndSend(exchange, routingKey, user);
     }
 }

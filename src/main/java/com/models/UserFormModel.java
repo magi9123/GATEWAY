@@ -1,9 +1,9 @@
-package com.facade;
+package com.models;
 
 
 import java.sql.Timestamp;
 
-public class UserSax {
+public class UserFormModel {
 
     private String requestId;
     private Timestamp time;
