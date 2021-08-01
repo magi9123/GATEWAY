@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.exception.RecordNotFoundException;
 import com.utils.Response;
 import com.exception.MissingDataRequestException;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,8 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
     public static final String RECORD_NOT_FOUND = "RECORD_NOT_FOUND";
     public static final String EXCEPTION = "EXCEPTION";
 
-    @ExceptionHandler(MissingDataRequestException.class)
-    public ResponseEntity<Response> handleRequestException(MissingDataRequestException ex, WebRequest webRequest) {
+    @ExceptionHandler(RecordNotFoundException.class)
+    public ResponseEntity<Response> handleRequestException(RecordNotFoundException ex, WebRequest webRequest) {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
         Response error = new Response(INCORRECT_REQUEST, details);
