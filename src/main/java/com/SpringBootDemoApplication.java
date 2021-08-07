@@ -54,22 +54,4 @@ public class SpringBootDemoApplication {
         rabbitTemplate.setMessageConverter((org.springframework.amqp.support.converter.MessageConverter) jsonMessageConverter());
         return rabbitTemplate;
     }
-
-
-    CommandLineRunner runner(FixerService fixerService) {
-        return args -> {
-            ObjectMapper mapper = new ObjectMapper();
-            TypeReference<List<FixerModel>> typeReference = new TypeReference<List<FixerModel>>() {
-            };
-
-            InputStream inputStream = TypeReference.class.getResourceAsStream("http://data.fixer.io/api/latest?access_key=a59542744c84078d88423d1d30b6ba47");
-
-            try {
-                List<FixerModel> fixerModels = mapper.readValue(inputStream, typeReference);
-                fixerService.save(fixerModels);
-            } catch (IIOException ex) {
-                System.out.println(ex.getStackTrace());
-            }
-        };
-    }
 }

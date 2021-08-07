@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class FixerController {
 
     @RequestMapping("/latest")
     @Scheduled(fixedRate = 360000 * 12)
-    public void save(List<FixerModel> fixerModels) {
-        fixerService.save(fixerModels);
+    public void save() throws IOException, InterruptedException {
+        fixerService.save();
     }
 }
