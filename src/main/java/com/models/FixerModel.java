@@ -23,6 +23,7 @@ public class FixerModel {
     @Column(name = "amount")
     private Double amount;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date")
     private Date date;
 
